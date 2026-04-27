@@ -5,7 +5,7 @@
     "test": "ls dist",
     "pretest": "npm run build",
     "build": "gulp build",
-    "deploy": "cd dist && rsync --archive --compress --delete . wst@web-standards.ru:/var/www/weblind.ru/html/"
+    "deploy": "rsync --archive --verbose --compress --delete --delete-excluded --exclude '.DS_Store' --copy-links ./dist/ deploy@weblind.ru:/opt/sites/weblind.ru/public/"
   },
   "engines": {
     "node": "20"

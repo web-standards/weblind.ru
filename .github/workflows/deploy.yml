@@ -23,4 +23,5 @@ jobs:
       - run: npm ci
       - run: npm run build
       # Deploy
-      - run: cd dist && rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress --delete . wst@web-standards.ru:/var/www/weblind.ru/html/
+      - run: rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --verbose --compress --delete --delete-excluded --exclude '.DS_Store' --copy-links . deploy@weblind.ru:/opt/sites/weblind.ru/public/
+        working-directory: ./dist
